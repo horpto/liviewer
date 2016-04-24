@@ -157,10 +157,6 @@ func (d *decoder) parseIHDR(length uint32) error {
 	if w <= 0 || h <= 0 {
 		return FormatError("non-positive dimension")
 	}
-	nPixels := int64(w) * int64(h)
-	if nPixels != int64(int(nPixels)) {
-		return UnsupportedError("dimension overflow")
-	}
 	d.cb = cbInvalid
 	d.depth = int(d.tmp[8])
 	switch d.depth {
